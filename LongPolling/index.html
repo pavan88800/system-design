@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Long Polling</title>
+  </head>
+  <body>
+    <h1>Long Polling Example</h1>
+    <div id="data-container"></div>
+  </body>
+  <script type="text/javascript">
+    async function fetchData(lastData) {
+      try {
+        const res = await fetch(`/getData?data=${lastData}`);
+        const result = await res.json();
+        console.log(result, "asd");
+        document.getElementById("data-container").innerHTML = result.data;
+        fetchData(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  </script>
+</html>
