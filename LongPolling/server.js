@@ -25,6 +25,7 @@ app.get("/getData", (req, res) => {
 });
 
 // This for only example in production use [PUT, PATCH]
+// logic if any user update request Please update this
 app.get("/updateData", (req, res) => {
   let updateData = req.query.data;
   data = updateData;
